@@ -13,9 +13,24 @@ class Comic:
 # Opens the help window when help button is pressed
 def help():
     print("Help button feedback")
+    
+    ##########   HELP GUI CODE   ##########
+    # Create a help window with a title
     help_box = Toplevel()
+    help_box.title("Comic Book Store Help")
+    
+    # Help frame
+    help_frame = ttk.Frame(help_box, width=300, height=300)
+    help_frame.grid(row=0, column=0)
 
-##########   GUI CODE   ##########
+    # Help label - Heading (row 0, column 0)
+    help_label = ttk.Label(help_frame,
+                            text="Help",
+                            font=("Ariel", "16", "bold")
+                            )
+    help_label.grid(row=0, column=0)
+
+##########   COMIC GUI CODE   ##########
 # Create a window with a title
 root = Tk()
 root.title("Comic Book Store")
@@ -37,17 +52,6 @@ help_button = ttk.Button(comic_frame,
                          command=help
                          )
 help_button.grid(row=1, column=0)
-
-# Help frame
-help_frame = ttk.Frame(root, width=300, height=300)
-comic_frame.grid(row=0, column=0)
-
-# Help label - Heading (row 0, column 0)
-help_label = ttk.Label(help_frame,
-                        text="Help",
-                        font=("Ariel", "16", "bold")
-                        )
-help_label.grid(row=0, column=0)
 
 # Run the main window loop
 root.mainloop()
