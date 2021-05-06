@@ -18,33 +18,33 @@ def help(self, partner):
     
     ##########   HELP GUI CODE   ##########
     # Create a help window with a title
-    help_box = Toplevel()
-    help_box.title("Help / Instructions")
+    self.help_box = Toplevel()
+    self.help_box.title("Help / Instructions")
     
     # Help frame
-    help_frame = ttk.Frame(help_box, width=300, height=300)
-    help_frame.grid(row=0, column=0)
+    self.help_frame = ttk.Frame(help_box, width=300, height=300)
+    self.help_frame.grid(row=0, column=0)
 
     # Help label - Heading (row 0, column 0)
-    help_label_1 = ttk.Label(help_frame,
+    self.help_label_1 = ttk.Label(help_frame,
                             text="Help / Instructions",
                             font=("Ariel", "16", "bold"),
                             )
-    help_label_1.grid(row=0, column=0)
+    self.help_label_1.grid(row=0, column=0)
 
     # Help label - Text (row 1, column 0)
-    help_label_2 = ttk.Label(help_frame,
+    self.help_label_2 = ttk.Label(help_frame,
                             text="Some random help text.",
                             font=("Ariel", "12"),
                             )
-    help_label_2.grid(row=1, column=0)
+    self.help_label_2.grid(row=1, column=0)
 
     # Help button (row 2, column 0)
-    dismiss_button = ttk.Button(help_frame,
+    self.dismiss_button = ttk.Button(help_frame,
                              text = "Close",
                              command=help_box.destroy
                              )
-    dismiss_button.grid(row=2, column=0)
+    self.dismiss_button.grid(row=2, column=0)
 
 # Close help window when 'close' button is pressed
 def close_help():
