@@ -13,7 +13,7 @@ class Comic:
 
 
 # Opens the help window when help button is pressed
-def help(self, partner):
+def help():
     print("Help button feedback")
     
     ##########   HELP GUI CODE   ##########
