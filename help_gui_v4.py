@@ -14,17 +14,20 @@ def help():
     print("Help button feedback")
     # Disable help button
     help_button.config(state=DISABLED)
-    
+
     # Close help window when 'close' button is pressed
     def close_help():
         help_button.config(state=NORMAL)
         help_box.destroy()
-        print("Dismiss button feedback)
+        print("Dismiss button feedback")
 
     ##########   HELP GUI CODE   ##########
     # Create a help window with a title
     help_box = Toplevel()
     help_box.title("Help / Instructions")
+
+    # If user presses cross at top right, closes help and 'releases' help button
+    help_box.protocol('WM_DELETE_WINDOW', close_help)
         
     # Help frame
     help_frame = ttk.Frame(help_box, width=300, height=300)
