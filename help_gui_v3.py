@@ -10,6 +10,7 @@ class Comic:
         self.stock = stock
 
 ##########   FUNCTION AND SETUP - HELP WINDOW   ##########
+# Opens the help window when help button is pressed
 def help():
     print("Help button feedback")
     # Disable help button
@@ -52,11 +53,7 @@ def help():
     dismiss_button.grid(row=2, column=0)    
 
 ##########   FUNCTION AND SETUP - COMIC WINDOW   ##########
-# Opens the help window when help button is pressed
-
-   
            
-
 ##########   COMIC GUI CODE   ##########
 # Create a window with a title
 root = Tk()
