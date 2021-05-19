@@ -18,6 +18,25 @@ def create_name_list():
     name_list.append(comic.name)
   return name_list
 
+# When sell radio button is pressed...
+def mode_sell():
+    print(mode_var.get())
+    # hide amount label and entry widgets
+    amount_label.grid_remove()
+    amount_entry.grid_remove()
+    # set chosen_mode from mode_list to "Sell"
+    chosen_mode.set(mode_list[0])
+
+# When restock radio button is pressed...
+def mode_restock():
+    print(mode_var.get())
+    # show amount label and entry widgets
+    amount_label.grid()
+    amount_entry.grid()
+    # set chosen_mode from mode_list to "Restock"
+    chosen_mode.set(mode_list[1])
+
+# When sell/restock button is pressed...
 def printy():
     print(mode_var.get())
 
@@ -29,6 +48,7 @@ accent_color = "#a6e5d0" #pale blue
 
 # Setup Lists
 comic_list = []
+mode_list = ['Sell', 'Restock']
 
 # Creating instances of comic class
 super_dude = Comic("Super Dude", 8)
@@ -50,16 +70,16 @@ comic_frame.pack(padx=10, pady=5)
 
 # Top frame (row 0, column 0)
 top_frame = Frame(comic_frame, width=300, height=250, bg=tertiary_color)
-top_frame.grid(row=0, column=0, columnspan=2, padx=10, pady=5)
+top_frame.grid(row=0, column=0, columnspan=2, padx=10, pady=5, sticky="WE")
 
 # Comic label - Heading (row 0, column 0)
 comic_label = Label(top_frame,
                         text="Comic Book Store",
                         font=("Ariel", "16", "bold"),
                         bg=primary_color,
-                        padx=150, pady=5
+                        padx=240, pady=5, anchor="center"
                         )
-comic_label.grid(row=0, column=0, columnspan=1, padx=10, pady=10)
+comic_label.grid(row=0, column=0, columnspan=1, padx=10, pady=10, sticky="N")
 
 # Left frame (row 1, column 0)
 left_frame = Frame(comic_frame, width=300, height=250, bg=tertiary_color)
@@ -88,16 +108,11 @@ details_label = Label(left_frame, textvariable=comic_details,
                       font=("Ariel", "12", "bold"),
                       bg=accent_color, padx=10, pady=5
                       )
-details_label.grid(row=1, column=0, columnspan=1, padx=10, pady=5)
+details_label.grid(row=1, column=0, columnspan=1, padx=10, pady=10)
 
 # Right frame (row 1, column 1)
 right_frame = Frame(comic_frame, width=300, height=250, bg=tertiary_color)
 right_frame.grid(row=1, column=1, padx=10, pady=5, sticky="NS")
-
-# Sell/Restock variables
-mode_list = ['Sell', 'Restock']
-chosen_mode = StringVar()
-chosen_mode.set(mode_list[0])
 
 # Stock Manager label - (row 0, column 0)
 mode_label = Label(right_frame,
@@ -128,13 +143,15 @@ mode_var.set("sell")
 
 # Sell Radiobutton (row 0, column 0)
 sell_radio = ttk.Radiobutton(mode_label_frame, text="Sell",
-                             value="sell", variable=mode_var
+                             value="sell", variable=mode_var,
+                             command=lambda: mode_sell()
                               )
 sell_radio.grid(row=0, column=0, padx=10, pady=2)
 
 # Restock Radiobutton (row 0, column 1)
 restock_radio = ttk.Radiobutton(mode_label_frame, text="Restock",
-                                value="restock", variable=mode_var
+                                value="restock", variable=mode_var,
+                                command=lambda: mode_restock()
                               )
 restock_radio.grid(row=0, column=1, padx=10, pady=2)
 
@@ -164,9 +181,10 @@ amount_label = Label(right_frame,
                         text="Amount:",
                         font=("Ariel", "12", "bold"),
                         bg=accent_color,
-                        padx=10, pady=2
+                        padx=5, pady=2
                         )
 amount_label.grid(row=3, column=0, columnspan=1, padx=10, pady=5, sticky="WE")
+amount_label.grid_remove()
 
 # Comic Entry - (row 3, column 1)
 # Create a variable to store the amount
@@ -178,13 +196,18 @@ amount_entry = Entry(right_frame, textvariable=amount,
                      font=("Ariel", "12"), width=7
                      )
 amount_entry.grid(row=3, column=1, columnspan=2, padx=10, pady=10, sticky="W")
+amount_entry.grid_remove()
+
+# Button text variable
+chosen_mode = StringVar()
+chosen_mode.set(mode_list[0])
 
 # Create a Button to sell a single chosen comic - (row 4, column 0)
-sell_button = Button(right_frame, textvariable=chosen_mode,
+manage_stock_button = Button(right_frame, textvariable=chosen_mode,
                               font=("Ariel", "12"),
                               width=20, command=printy
                      )
-sell_button.grid(row=4, column=0, columnspan=2, padx=10, pady=10)
+manage_stock_button.grid(row=4, column=0, columnspan=2, padx=10, pady=10)
 
 # Run the main window loop
 root.mainloop()
