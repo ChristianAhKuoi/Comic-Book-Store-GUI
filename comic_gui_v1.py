@@ -46,7 +46,8 @@ summary_label = Label(left_frame,
                         text="Summary",
                         font=("Ariel", "16", "bold"),
                         bg=secondary_color,
-                        padx=150, pady=5
+                        width=22,
+                        padx=10, pady=5
                         )
 summary_label.grid(row=0, column=0, columnspan=2, padx=10, pady=10)
 
@@ -59,14 +60,15 @@ mode_list = ['Sell', 'Restock']
 chosen_mode = StringVar()
 chosen_mode.set(mode_list[0])
 
-# Sell/Restock label - (row 0, column 0)
-mode_label = Label(right_frame,
-                        textvariable=chosen_mode,
+# Stock Manager label - (row 0, column 0)
+stock_manager_label = Label(right_frame,
+                        text="Stock Manager",
                         font=("Ariel", "16", "bold"),
+                        width=22,
                         bg=secondary_color,
-                        padx=150, pady=5
+                        padx=10, pady=5
                         )
-mode_label.grid(row=0, column=0, columnspan=2, padx=10, pady=10)
+stock_manager_label.grid(row=0, column=0, columnspan=2, padx=10, pady=10)
 
 # Run the main window loop
 root.mainloop()

@@ -100,14 +100,14 @@ chosen_mode = StringVar()
 chosen_mode.set(mode_list[0])
 
 # Stock Manager label - (row 0, column 0)
-mode_label = Label(right_frame,
+stock_manager_label = Label(right_frame,
                         text="Stock Manager",
                         font=("Ariel", "16", "bold"),
                         width=22,
                         bg=secondary_color,
                         padx=10, pady=5
                         )
-mode_label.grid(row=0, column=0, columnspan=2, padx=10, pady=10)
+stock_manager_label.grid(row=0, column=0, columnspan=2, padx=10, pady=10)
 
 # Mode label - (row 1, column 0)
 mode_label = Label(right_frame,
