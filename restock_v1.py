@@ -19,6 +19,16 @@ class Comic:
         else:
             return False
 
+    # Restocks a set amount of the chosen comic
+    def restock(self, amount):
+        if amount > 0:
+            self.stock += amount
+            print(self.stock)
+            return True
+        else:
+            return False
+
+
 
 ##########   FUNCTION AND SETUP - COMIC WINDOW   ##########
 # Creates a name list to store every comic name in
@@ -55,6 +65,15 @@ def sell_stock(comic):
         action_feedback_label.config(fg="red")
         action_feedback.set("Uh Oh! {} is out of stock.".format(comic.name))
 
+# Create a sell function
+def restock_stock(comic):
+    if comic.restock(amount.get()):
+        action_feedback_label.config(fg="lime")
+        action_feedback.set("Success! {} {} comic was restocked.".format(amount.get(), comic.name))
+    else:
+        action_feedback_label.config(fg="red")
+        action_feedback.set("Please enter a positive integer.".format(comic.name))
+
 # When Sell/Restock Button is pressed...
 def manage_stock():
     for comic in comic_list:
@@ -63,7 +82,7 @@ def manage_stock():
                 amount.set(1)
                 sell_stock(comic)
             elif mode_var.get() == "restock":
-                print("Successfully restocked a comic")
+                restock_stock(comic)
             else:
                 pass
 
