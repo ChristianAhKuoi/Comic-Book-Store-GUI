@@ -2,16 +2,7 @@
 from tkinter import *
 from tkinter import ttk
 
-##########   CLASS CODE   ##########
-class Comic:
-    """This code will store the details of each comic (Super Dude, Lizard Man, Water Woman)"""
-    def __init__(self, title, stock):
-        self.title = title
-        self.stock = stock
-        
 ##########   FUNCTION AND SETUP   ##########
-
-
 # Opens the help window when help button is pressed
 def help():
     print("Help button feedback")

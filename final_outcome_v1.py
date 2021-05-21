@@ -16,7 +16,6 @@ class Comic:
         if amount <= self.stock:
             self.stock -= amount
             self.sold += amount
-            print(self.stock)
             return True
         else:
             return False
@@ -25,7 +24,6 @@ class Comic:
     def restock(self, amount):
         if amount > 0:
             self.stock += amount
-            print(self.stock)
             return True
         else:
             return False
@@ -54,7 +52,6 @@ def update_summary():
 
 # When sell radio button is pressed...
 def mode_sell():
-    print(mode_var.get())
     # hide amount label and entry widgets
     amount_label.grid_remove()
     amount_entry.grid_remove()
@@ -63,7 +60,6 @@ def mode_sell():
 
 # When restock radio button is pressed...
 def mode_restock():
-    print(mode_var.get())
     # show amount label and entry widgets
     amount_label.grid()
     amount_entry.grid()
@@ -108,6 +104,71 @@ def manage_stock():
     # Update the Summary GUI 
     update_summary()
     amount.set("")
+
+# Opens the help window when help button is pressed
+def help():
+    # Disable help button
+    help_button.config(state=DISABLED)
+
+    # Close help window when 'close' button is pressed
+    def close_help():
+        help_button.config(state=NORMAL)
+        help_box.destroy()
+
+    ##########   HELP GUI CODE   ##########
+    # Create a help window with a title
+    help_box = Toplevel()
+    help_box.title("Help / Informations")
+
+    # Set dimensions of help window
+    help_box.geometry('400x350')
+
+    # Set color of help window background
+    help_box.configure(bg=tertiary_color)
+
+    # Basically makes the frame centre to the middle of the window
+    help_box.grid_columnconfigure(0, weight=1)
+
+    # If user presses cross at top right, closes help and 'releases' help button
+    help_box.protocol('WM_DELETE_WINDOW', close_help)
+        
+    # Help frame
+    help_frame = Frame(help_box, width=350, height=400,
+                       bg=tertiary_color, padx=20, pady=20
+                       )
+    help_frame.grid(row=0, column=0, sticky="NS")
+
+    # Help label - Heading (row 0, column 0)
+    help_label_1 = Label(help_frame,
+                            text="Help / Information",
+                            font=("Ariel", "16", "bold"),
+                            bg=primary_color,
+                            padx=40, pady=5
+                            )
+    help_label_1.grid(row=0, column=0, padx=10, pady=5)
+
+    # Help label - Text (row 1, column 0)
+    help_label_2 = Label(help_frame,
+                            text="The left side of the program displays the details of the comics which include the comic's name, the comic's stock, and lastly the total comics that have been sold."
+                                 "\nThe right side of the program is used to sell a single comic or to restock a set amount of comics."
+                                 "\n\nWhen the sell mode is selected, hit button to sell a chosen comic using the dropdown menu."
+                                 "\nWhen the restock mode is selected, enter a positive number in the entry field and hit the button to restock the chosen comic.",
+                            font=("Ariel", "10"),
+                            wraplength=300,
+                            justify="center",
+                            bg=accent_color,
+                            padx=10, pady=10
+                            )
+    help_label_2.grid(row=1, column=0, padx=10, pady=5)
+
+    # Help button (row 2, column 0)
+    dismiss_button = Button(help_frame,
+                                text = "Close",
+                                font=("Ariel", "10", "bold"),
+                                padx=10, pady=2,
+                                command=close_help
+                                )
+    dismiss_button.grid(row=2, column=0, padx=10, pady=5)    
 
 # Formatting Variables...
 primary_color = "#38c8f5" #sky blue
@@ -263,16 +324,25 @@ amount_entry = Entry(right_frame, textvariable=amount,
 amount_entry.grid(row=3, column=1, columnspan=2, padx=10, pady=10, sticky="W")
 amount_entry.grid_remove()
 
+# Help button (row 4, column 0)
+help_button = Button(right_frame,
+                         text = "Help",
+                         font=("Ariel", "12"),
+                         padx=10,
+                         command=help
+                         )
+help_button.grid(row=4, column=0, padx=10, pady=10)
+
 # Button text variable
 chosen_mode = StringVar()
 chosen_mode.set(mode_list[0])
 
-# Create a Button to sell or restock comics - (row 4, column 0)
+# Create a Button to sell or restock comics - (row 4, column 1)
 manage_stock_button = Button(right_frame, textvariable=chosen_mode,
                               font=("Ariel", "12"),
                               width=20, command=manage_stock
                      )
-manage_stock_button.grid(row=4, column=0, columnspan=2, padx=10, pady=10)
+manage_stock_button.grid(row=4, column=1, columnspan=1, padx=10, pady=10)
 
 # Create an action feedback label - (row 4, column 0)
 action_feedback = StringVar()

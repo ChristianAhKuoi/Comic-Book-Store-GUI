@@ -2,13 +2,6 @@
 from tkinter import *
 from tkinter import ttk
 
-##########   CLASS CODE   ##########
-class Comic:
-    """This code will store the details of each comic (Super Dude, Lizard Man, Water Woman)"""
-    def __init__(self, title, stock):
-        self.title = title
-        self.stock = stock
-
 ##########   FUNCTION AND SETUP - HELP WINDOW   ##########
 # Opens the help window when help button is pressed
 def help():
@@ -76,6 +69,7 @@ def help():
 
 ##########   FUNCTION AND SETUP - COMIC WINDOW   ##########
 # Formatting Variables...
+# Colours
 primary_color = "#38c8f5" #sky blue
 secondary_color = "#e31679" #deep pink
 tertiary_color = "#242424" #light black

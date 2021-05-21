@@ -28,8 +28,6 @@ class Comic:
         else:
             return False
 
-
-
 ##########   FUNCTION AND SETUP - COMIC WINDOW   ##########
 # Creates a name list to store every comic name in
 def create_name_list():

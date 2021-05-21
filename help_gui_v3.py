@@ -2,13 +2,6 @@
 from tkinter import *
 from tkinter import ttk
 
-##########   CLASS CODE   ##########
-class Comic:
-    """This code will store the details of each comic (Super Dude, Lizard Man, Water Woman)"""
-    def __init__(self, title, stock):
-        self.title = title
-        self.stock = stock
-
 ##########   FUNCTION AND SETUP - HELP WINDOW   ##########
 # Opens the help window when help button is pressed
 def help():
@@ -20,7 +13,7 @@ def help():
     def close_help():
         help_button.config(state=NORMAL)
         help_box.destroy()
-        print("Dismiss button feedback)
+        print("Dismiss button feedback")
 
     ##########   HELP GUI CODE   ##########
     # Create a help window with a title
@@ -45,15 +38,13 @@ def help():
                             )
     help_label_2.grid(row=1, column=0)
 
-    # Help button (row 2, column 0)
+    # Dismiss button (row 2, column 0)
     dismiss_button = ttk.Button(help_frame,
                                 text = "Close",
                                 command=close_help
                                 )
     dismiss_button.grid(row=2, column=0)    
-
-##########   FUNCTION AND SETUP - COMIC WINDOW   ##########
-           
+    
 ##########   COMIC GUI CODE   ##########
 # Create a window with a title
 root = Tk()

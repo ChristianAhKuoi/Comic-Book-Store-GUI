@@ -2,22 +2,8 @@
 from tkinter import *
 from tkinter import ttk
 
-##########   CLASS CODE   ##########
-class Comic:
-    """This code will store the details of each comic (Super Dude, Lizard Man, Water Woman)"""
-    def __init__(self, name, stock):
-        self.name = name
-        self.stock = stock
-        comic_list.append(self)
-
 ##########   FUNCTION AND SETUP - COMIC WINDOW   ##########
 # Functions...
-def create_name_list():
-  name_list = []
-  for comic in comic_list:
-    name_list.append(comic.name)
-  return name_list
-
 # When sell radio button is pressed...
 def mode_sell():
     print(mode_var.get())
@@ -47,14 +33,7 @@ tertiary_color = "#242424" #light black
 accent_color = "#a6e5d0" #pale blue
 
 # Setup Lists
-comic_list = []
 mode_list = ['Sell', 'Restock']
-
-# Creating instances of comic class
-super_dude = Comic("Super Dude", 8)
-lizard_man = Comic("Lizard Man", 12)
-water_woman = Comic("Water Woman", 3)
-comic_names = create_name_list()
 
 ##########   COMIC GUI CODE   ##########
 # Create a window with a title
@@ -166,6 +145,7 @@ comic_combobox_label.grid(row=2, column=0, columnspan=1, padx=10, pady=5, sticky
 
 # Comic Combobox
 # Setup variable and option list for the account Combobox
+comic_names = ["Super Dude", "Lizard Man", "Water Woman"]
 chosen_comic = StringVar()
 chosen_comic.set(comic_names[0])
 
