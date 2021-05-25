@@ -7,8 +7,8 @@ class Comic:
     """This code will store the details of each comic (Super Dude, Lizard Man, Water Woman)"""
     def __init__(self, name, stock, sold):
         self.name = name
-        self.stock = float(stock)
-        self.sold = float(sold)
+        self.stock = int(stock)
+        self.sold = int(sold)
         comic_list.append(self)
 
     # Sells a chosen comic
@@ -35,6 +35,9 @@ def get_data():
 
     for line in line_list:
         comic_data = line.strip().split(",")
+        Comic(*comic_data)
+
+    comic_file.close()
     
 # Creates a name list to store every comic name in
 def create_name_list():
