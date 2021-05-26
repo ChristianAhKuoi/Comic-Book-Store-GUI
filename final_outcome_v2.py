@@ -29,6 +29,7 @@ class Comic:
             return False
 
 ##########   FUNCTION AND SETUP - COMIC WINDOW   ##########
+# Reads the comic.txt for the instances of the comic class
 def get_data():
     comic_file = open("comics.txt","r")
     line_list = comic_file.readlines()
